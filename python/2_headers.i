@@ -309,6 +309,7 @@
 %feature("director") crpropa::ObserverFeature;
 %include "crpropa/module/Observer.h"
 %include "crpropa/module/SimplePropagation.h"
+%include "crpropa/module/DiffusePropagation.h"
 %include "crpropa/module/PropagationCK.h"
 
 %ignore crpropa::Output::enableProperty(const std::string &property, const Variant& defaultValue, const std::string &comment = "");
@@ -443,4 +444,3 @@ class RangeError {};
         return (*($self))[i];
   }
 };
-

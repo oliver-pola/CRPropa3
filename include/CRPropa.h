@@ -47,6 +47,7 @@
 #include "crpropa/module/PropagationCK.h"
 #include "crpropa/module/Redshift.h"
 #include "crpropa/module/SimplePropagation.h"
+#include "crpropa/module/DiffusePropagation.h"
 #include "crpropa/module/SynchrotronRadiation.h"
 #include "crpropa/module/TextOutput.h"
 #include "crpropa/module/Tools.h"
