@@ -3,20 +3,22 @@
 
 #include "crpropa/Module.h"
 #include "crpropa/Units.h"
+#include "crpropa/Random.h"
 
 namespace crpropa {
 
 /**
  @class DiffusePropagation
- @brief Simple rectilinear propagation in absence of magnetic fields.
+ @brief Simple diffusion propagation
 
- This module implements rectilinear propagation.
+ This module implements diffusion.
  The step size is guaranteed to be larger than minStep and smaller than maxStep.
  It always proposes a next step size of maxStep.
  */
 class DiffusePropagation: public Module {
 private:
 	double minStep, maxStep;
+	Random &random = Random::instance();
 
 public:
 	DiffusePropagation(double minStep = (0.1 * kpc), double maxStep = (1 * Gpc));

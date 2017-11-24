@@ -20,6 +20,8 @@ void DiffusePropagation::process(Candidate *c) const {
 	Vector3d pos = c->current.getPosition();
 	Vector3d dir = c->current.getDirection();
 	c->current.setPosition(pos + dir * step);
+	
+	c->current.setDirection(random.randVector());
 
 	c->setNextStep(maxStep);
 }
