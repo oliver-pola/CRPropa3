@@ -12,6 +12,7 @@
 %include "stdint.i"
 %include "std_container.i"
 %include "exception.i"
+%include "std_iostream.i"
 
 #ifdef CRPROPA_HAVE_QUIMBY
 %import (module="quimby") "quimby/Referenced.h"
@@ -47,6 +48,7 @@
 %ignore operator crpropa::Observer*;
 %ignore operator crpropa::ObserverFeature*;
 %ignore operator crpropa::MagneticField*;
+%ignore operator crpropa::AdvectionField*;
 %ignore operator crpropa::ParticleCollector*;
 %ignore crpropa::TextOutput::load;
 
@@ -54,9 +56,13 @@
 %feature("unref") crpropa::Referenced "$this->removeReference();"
 
 
+%include "crpropa/Logging.h"
+%include "crpropa/Version.h"
+%pythoncode %{
+        __version__ = g_GIT_DESC 
+%}
+
 %include "crpropa/Vector3.h"
-
-
 %include "crpropa/Referenced.h"
 %include "crpropa/Units.h"
 %include "crpropa/Common.h"
@@ -279,6 +285,10 @@
 %template(MagneticFieldRefPtr) crpropa::ref_ptr<crpropa::MagneticField>;
 %include "crpropa/magneticField/MagneticField.h"
 
+%implicitconv crpropa::ref_ptr<crpropa::AdvectionField>;
+%template(AdvectionFieldRefPtr) crpropa::ref_ptr<crpropa::AdvectionField>;
+%include "crpropa/advectionField/AdvectionField.h"
+
 %include "crpropa/Grid.h"
 %include "crpropa/GridTools.h"
 
@@ -302,6 +312,7 @@
 %include "crpropa/magneticField/AMRMagneticField.h"
 %include "crpropa/magneticField/JF12Field.h"
 %include "crpropa/magneticField/PshirkovField.h"
+%include "crpropa/magneticField/ArchimedeanSpiralField.h"
 %include "crpropa/module/BreakCondition.h"
 %include "crpropa/module/Boundary.h"
 
@@ -412,6 +423,7 @@ class RangeError {};
 %include "crpropa/module/EMTripletPairProduction.h"
 %include "crpropa/module/EMInverseComptonScattering.h"
 %include "crpropa/module/SynchrotronRadiation.h"
+%include "crpropa/module/AdiabaticCooling.h"
 
 %template(IntSet) std::set<int>;
 %include "crpropa/module/Tools.h"
